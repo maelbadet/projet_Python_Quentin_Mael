@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Install dependencies
-RUN pip install fastapi uvicorn pytest python-dotenv
+RUN pip install fastapi uvicorn pytest python-dotenv sqlalchemy pymysql
 
 # Expose backend port
 EXPOSE 8000

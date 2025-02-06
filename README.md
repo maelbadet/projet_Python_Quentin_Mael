@@ -37,9 +37,10 @@ L'API possedents plusieurs routes qui vont nous etres utiles :
 - https://api.sportmonks.com/v3/football/squads/teams/53?api_token={{api_token}}&include= recuperer les joueurs de l'equipe (53 ici)
 - https://api.sportmonks.com/v3/football/schedules/seasons/1927/teams/53?api_token={{api_token}}&include= recuperer les informations d'une saison
 
-importer les equipes (ligue1),
-puis importer les matchs,
-puis importer les resultats
+## Lancement du projet
+Pour lancer le projet, installer toutes les dependances et lancer les differents server, il suffit de lancer la commande docker
+`docker-compose up --build`. 
+Une fois le build fait une fois, il suffira de lancer la commande `docker-compose up` pour lancer le projet et les servers
 ## BACKEND
 
 ### sources : 
