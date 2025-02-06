@@ -9,6 +9,9 @@ d'avoir affiché les informations comme ses derniers matchs, les rencontres a ve
 - **Python** : Pour la partie *backend* et *frontend* de l'application
 - **https://docs.sportmonks.com/football** : Utilisation de l'api sportmonks pour obtenir les informations 
 sur les clubs de foot
+- **trello** : https://trello.com/b/Sfd6ubWS/projetpythonquentinmael
+- **git** : https://github.com/maelbadet/projet_Python_Quentin_Mael
+- **figma** : https://www.figma.com/design/N5RxDKr8nCaA5dvRpMtxFd/projet-3-quentin-et-mael?node-id=0-1&m=dev&t=2qKgEEN44dGKTI6r-1
 
 ## BACKEND
 ### -- **Important** --
