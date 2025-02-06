@@ -34,16 +34,27 @@ L'API possedents plusieurs routes qui vont nous etres utiles :
 - https://api.sportmonks.com/v3/football/teams?api_token={{api_token}}&include= Recuperer toutes les equipes
 - https://api.sportmonks.com/v3/football/players?api_token={{api_token}}&include= Recupere tous les joueurs
 - https://api.sportmonks.com/v3/football/players/search/JamesForrest?api_token={{api_token}}&include= recupere un joueur par nom
+- https://api.sportmonks.com/v3/football/squads/teams/53?api_token={{api_token}}&include= recuperer les joueurs de l'equipe (53 ici)
+- https://api.sportmonks.com/v3/football/schedules/seasons/1927/teams/53?api_token={{api_token}}&include= recuperer les informations d'une saison
 
+importer les equipes (ligue1),
+puis importer les matchs,
+puis importer les resultats
 ## BACKEND
 ### -- **Important** --
 Avant de lancer l'application, il faut penser a bien installé les librairies utiliser pour ne pas avoir 
 de probleme :
+
+Bien penser à mettre à jour son pip : 
+- `pip install --upgrade pip`
+
 Liste des librairies : 
-- blablabla
-- blablabla
-- blablabla
-- blablabla
+- `pip install fastapi uvicorn pytest python-dotenv`
+### sources : 
+  - fastapi : https://fastapi.tiangolo.com/fr/tutorial/#installer-fastapi
+  - uvicorn : https://fastapi.tiangolo.com/fr/tutorial/#installer-fastapi
+  - pytest : https://docs.pytest.org/en/stable/getting-started.html
+  - dotenv : https://pypi.org/project/python-dotenv/
 
 ### Les routes
 Les differentes routes utilisees dans le projet sont listé dans le swagger, mais je préfère les 
