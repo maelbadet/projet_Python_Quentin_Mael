@@ -41,15 +41,7 @@ importer les equipes (ligue1),
 puis importer les matchs,
 puis importer les resultats
 ## BACKEND
-### -- **Important** --
-Avant de lancer l'application, il faut penser a bien installé les librairies utiliser pour ne pas avoir 
-de probleme :
 
-Bien penser à mettre à jour son pip : 
-- `pip install --upgrade pip`
-
-Liste des librairies : 
-- `pip install fastapi uvicorn pytest python-dotenv`
 ### sources : 
   - fastapi : https://fastapi.tiangolo.com/fr/tutorial/#installer-fastapi
   - uvicorn : https://fastapi.tiangolo.com/fr/tutorial/#installer-fastapi
