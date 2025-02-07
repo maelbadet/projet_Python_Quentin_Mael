@@ -2,7 +2,7 @@
 
 ## Introduction
 Le but est de faire une application web permettant à un utilisateur de rechercher son equipe et 
-d'avoir affiché les informations comme ses derniers matchs, les rencontres a venir le club etc.
+d'avoir affiché les informations comme ses derniers matchs, les rencontres a venir le club, etc.
 
 ## Technologies utilisee 
 - **Docker** : Utilisation de Docker pour creer le conteneur de la base de donnee
@@ -43,7 +43,7 @@ Pour lancer le projet, installer toutes les dependances et lancer les differents
 Une fois le build fait une fois, il suffira de lancer la commande `docker-compose up` pour lancer le projet et les servers
 ## BACKEND
 
-### sources : 
+### Sources : 
   - fastapi : https://fastapi.tiangolo.com/fr/tutorial/#installer-fastapi
   - uvicorn : https://fastapi.tiangolo.com/fr/tutorial/#installer-fastapi
   - pytest : https://docs.pytest.org/en/stable/getting-started.html
@@ -52,11 +52,11 @@ Une fois le build fait une fois, il suffira de lancer la commande `docker-compos
 ### Les routes
 Les differentes routes utilisees dans le projet sont listé dans le swagger, mais je préfère les 
 remettre ici pour la simpliciter de lectures. Voici la liste des routes ainsi que les methodes d'acces : 
-- route 1 : expliquer a quoi servent les routes et le methode utiliser (POST ou GET ou PATCH ou PUT)
-- route 2 : expliquer a quoi servent les routes et le methode utiliser (POST ou GET ou PATCH ou PUT)
-- route 3 : expliquer a quoi servent les routes et le methode utiliser (POST ou GET ou PATCH ou PUT)
-- route 4 : expliquer a quoi servent les routes et le methode utiliser (POST ou GET ou PATCH ou PUT)
-- route 5 : expliquer a quoi servent les routes et le methode utiliser (POST ou GET ou PATCH ou PUT)
+- http://localhost:8000/ : affiche la page d'accueil de mon backend
+- http://localhost:8000/docs : affiche le swagger avec les differentes routes disponnibles
+- http://localhost:8000/api/v1/insert/leagues/ : permet l'insertion dans la base de donne de la ligue premiership
+- http://localhost:8000/api/v1/insert/teams/ : permet l'insertion dans la base de donne des equipes de premiership
+- http://localhost:8000/api/v1/insert/season/ : permet l'insertion dans la base des saisons pour l'id de league 501
 
 ## FRONTEND
 ### -- **Important** --
@@ -76,4 +76,4 @@ Les differentes routes utilisees sont les suivantes :
 - route 4 : expliquer à quoi servent les routes
 - route 5 : expliquer à quoi servent les routes
 
-Mettre des explications sur le fonctionnement de l'application coter front
+Mettre des explications sur le fonctionnement de l'application coté front

@@ -6,6 +6,7 @@ class Result(Base):
 	__tablename__ = "results"
 
 	id = Column(Integer, primary_key=True, index=True)
+	season_id = Column(Integer, nullable=False)
 	name = Column(String(255), nullable=False)
 	starting_at = Column(Date, nullable=False)
 	result_info = Column(String(255), nullable=True)

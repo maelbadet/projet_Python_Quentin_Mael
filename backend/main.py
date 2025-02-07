@@ -1,18 +1,11 @@
-from fastapi import FastAPI, Depends
-from sqlalchemy.orm import Session
-from db.db import get_db
+from fastapi import FastAPI
+from routes import home, insertLeagues, insertTeams, insertSeason, insertResult
 
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-	return {"message": "Bienvenue sur votre API FastAPI !"}
-# Endpoint pour tester la connexion à la base de données
-@app.get("/test-db/")
-def test_db_connection(db: Session = Depends(get_db)):
-	try:
-		# Exécuter une requête simple pour vérifier la connexion
-		db.execute("SELECT 1")
-		return {"status": "success", "message": "Connexion à la base de données réussie"}
-	except Exception as e:
-		return {"status": "error", "message": f"Erreur de connexion : {str(e)}"}
+# Ajout des routers avec des préfixes propres
+app.include_router(home.router, prefix="", tags=["Accueil"])
+app.include_router(insertLeagues.router, prefix="/api/v1/insert", tags=["Recuperation et insertion dans la base de donnee"])
+app.include_router(insertTeams.router, prefix="/api/v1/insert", tags=["Recuperation et insertion dans la base de donnee"])
+app.include_router(insertSeason.router, prefix="/api/v1/insert", tags=["Recuperation et insertion dans la base de donnee"])
+app.include_router(insertResult.router, prefix="/api/v1/insert", tags=["Recuperation et insertion dans la base de donnee"])
