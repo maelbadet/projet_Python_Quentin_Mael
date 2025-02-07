@@ -64,7 +64,7 @@ def get_latest_matches(db: Session = Depends(get_db)):
 		:return: Récupere les 5 derniers matchs jouée depuis la base de donnee
 		"""
 	# Requêter les 5 derniers matchs par date (starting_at) dans l'ordre décroissant
-	results = db.query(Result).order_by(Result.starting_at.desc()).limit(5).all()
+	results = db.query(Result).order_by(Result.starting_at.desc()).limit(4).all()
 
 	# Si aucun match n'est trouvé
 	if not results:
