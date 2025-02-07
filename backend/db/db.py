@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import os
-from .models import Base
+from .tables import Base
 
 # Récupérer l'URL de connexion de la base de données à partir des variables d'environnement
 DATABASE_URL = os.getenv("DATABASE_URL", "mysql+pymysql://user:password@localhost/db_name")

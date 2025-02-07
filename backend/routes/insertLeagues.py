@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from db.db import get_db  # Import correct de la dépendance de session
-from db.models import League  # Import du modèle SQLAlchemy
+from db.tables import League  # Import du modèle SQLAlchemy
 
 # Création d'un router spécifique pour les routes 'leagues'
 router = APIRouter()
