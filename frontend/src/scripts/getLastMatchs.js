@@ -65,7 +65,6 @@ function displayDataLatestMatches(data) {
         const listItem = document.createElement("li");
         listItem.style.cursor = "pointer";
         listItem.addEventListener("click", () => {
-            //window.location.href = `match-details.html?id=${item.id}`;
             window.location.href = `result.html?id=${item.id}`;
         });
 
@@ -73,7 +72,7 @@ function displayDataLatestMatches(data) {
         // Séparer les équipes
         const [team1, team2] = item.name.split(" vs ");
 
-        // Déterminer l'équipe gagnante
+        // nom
         let team1Element = document.createElement("span");
         team1Element.textContent = team1;
 
@@ -81,9 +80,9 @@ function displayDataLatestMatches(data) {
         team2Element.textContent = team2;
 
         if (item.goal_set > item.goal_conceded) {
-            team1Element.style.fontWeight = "bold"; // Mettre en gras l'équipe qui a marqué le plus
+            team1Element.style.fontWeight = "bold";
         } else if (item.goal_conceded > item.goal_set) {
-            team2Element.style.fontWeight = "bold"; // Mettre en gras l'autre équipe si elle a gagné
+            team2Element.style.fontWeight = "bold";
         }
 
         const matchName = document.createElement("div");
@@ -93,14 +92,14 @@ function displayDataLatestMatches(data) {
 
         listItem.appendChild(matchName);
 
-        // Date du match (formatée)
+        //date
         const matchDate = document.createElement("div");
         matchDate.textContent = formatDate(item.starting_at);
-        matchDate.style.fontSize = "14px"; // Optionnel : réduire la taille du texte
-        matchDate.style.color = "#808080"; // Optionnel : couleur grise pour la date
+        matchDate.style.fontSize = "14px";
+        matchDate.style.color = "#808080";
         listItem.appendChild(matchDate);
 
-        // Score du match
+        // Score
         const matchScore = document.createElement("div");
 
         const score1 = document.createElement("span");
@@ -108,14 +107,12 @@ function displayDataLatestMatches(data) {
         const score2 = document.createElement("span");
         score2.textContent = item.goal_conceded;
 
-        // Appliquer le style gras au score le plus élevé
         if (item.goal_set > item.goal_conceded) {
             score1.style.fontWeight = "bold";
         } else if (item.goal_conceded > item.goal_set) {
             score2.style.fontWeight = "bold";
         }
 
-        // Ajouter le score formaté
         matchScore.appendChild(score1);
         matchScore.appendChild(document.createTextNode(" - "));
         matchScore.appendChild(score2);
