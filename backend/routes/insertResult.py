@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from db.db import get_db  # Import correct de la dépendance de session
-from db.models import Result  # Import du modèle SQLAlchemy
+from db.tables import Result  # Import du modèle SQLAlchemy
 
 router = APIRouter()
 
@@ -95,7 +95,7 @@ def get_football_season(db: Session = Depends(get_db)):
 
 				# Sauvegarde des changements dans la base
 				db.commit()
-		return {"message": "Les saisons on bien été ajoutée ou mise à jour."}
+		return {"message": "Les resultats on bien été ajoutée ou mise à jour."}
 
 	except requests.exceptions.RequestException as e:
 		return {"error": f"Erreur lors de la récupération des ligues : {str(e)}"}

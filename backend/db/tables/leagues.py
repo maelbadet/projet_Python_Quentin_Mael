@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Date
-from db.models.base import Base
+from .base import Base
 
 
 class League(Base):
@@ -10,3 +10,4 @@ class League(Base):
 	api_id = Column(Integer, nullable=False)
 	country_id = Column(Integer, nullable=False)
 	image_path = Column(String(255), nullable=True)
+

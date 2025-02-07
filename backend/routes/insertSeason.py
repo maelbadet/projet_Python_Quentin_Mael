@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from db.db import get_db  # Import correct de la dépendance de session
-from db.models import Season  # Import du modèle SQLAlchemy
+from db.tables import Season  # Import du modèle SQLAlchemy
 
 router = APIRouter()
 
