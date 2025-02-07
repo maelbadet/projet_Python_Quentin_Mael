@@ -3,55 +3,20 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchDataLastestMatches() {
-    /*$.ajax({
+    $.ajax({
         url: "http://localhost:8000/api/v1/results/latest-matches",
         method: "GET",
         dataType: "json",
         success: function (data) {
-            displayDataLastestMatches(data);
+            displayDataLatestMatches(data);
         },
         error: function (error) {
             console.error("Erreur AJAX :", error);
         }
-    });*/
-    displayDataLatestMatches([
-        {
-            "id": 228,
-            "name": "Celtic vs Hearts",
-            "season_id": 825,
-            "starting_at": "2017-05-21",
-            "goal_conceded": 0,
-            "goal_set": 2
-        },
-        {
-            "id": 224,
-            "name": "St. Johnstone vs Rangers",
-            "season_id": 825,
-            "starting_at": "2017-05-21",
-            "goal_conceded": 2,
-            "goal_set": 1
-        },
-        {
-            "id": 226,
-            "name": "Partick Thistle vs Aberdeen",
-            "season_id": 825,
-            "starting_at": "2017-05-21",
-            "goal_conceded": 6,
-            "goal_set": 0
-        },
-        {
-            "id": 223,
-            "name": "Hamilton Academical vs Dundee",
-            "season_id": 825,
-            "starting_at": "2017-05-20",
-            "goal_conceded": 0,
-            "goal_set": 4
-        }
-    ])
+    });
 }
 
 function displayDataLatestMatches(data) {
-    console.log("Match Data:", data);
     const listContainer = document.getElementById("listLastMatch");
 
     if (!listContainer) {
