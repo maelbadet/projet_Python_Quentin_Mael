@@ -10,6 +10,9 @@ COPY src/pages/ .
 # Copy CSS files to a "styles" directory
 COPY src/styles/ ./styles
 
+# Copy JS files to a "scripts" directory
+COPY src/scripts/ ./scripts
+
 # Copy custom Nginx configuration
 COPY default.conf /etc/nginx/conf.d/default.conf
 
