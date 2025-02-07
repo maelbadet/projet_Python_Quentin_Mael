@@ -57,6 +57,7 @@ remettre ici pour la simpliciter de lectures. Voici la liste des routes ainsi qu
 - http://localhost:8000/api/v1/insert/leagues/ : permet l'insertion dans la base de donne de la ligue premiership
 - http://localhost:8000/api/v1/insert/teams/ : permet l'insertion dans la base de donne des equipes de premiership
 - http://localhost:8000/api/v1/insert/season/ : permet l'insertion dans la base des saisons pour l'id de league 501
+- http://localhost:8000/api/v1/insert/results/ : permet l'insertion dans la base des resultats pour l'id de saison 825
 
 ## FRONTEND
 ### -- **Important** --
