@@ -1,9 +1,9 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from routes import home, insertLeagues, insertTeams, insertSeason, insertResult
 from controllers.leagueController import league_router
 from controllers.resultController import result_router
 from controllers.seasonController import season_router
-
 
 app = FastAPI(
 	title="Football API",
@@ -11,6 +11,19 @@ app = FastAPI(
 	version="1.0",
 	docs_url="/docs",  # URL pour Swagger UI
 	redoc_url="/redoc"  # Redoc UI
+)
+
+# Définition des origines autorisées
+origins = [
+    "http://localhost:3000",  # Autorise ton frontend local
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Autorise uniquement ces origines
+    allow_credentials=True,
+    allow_methods=["*"],  # Autorise toutes les méthodes (GET, POST, etc.)
+    allow_headers=["*"],  # Autorise tous les headers
 )
 
 # Ajout des routers avec des préfixes propres
