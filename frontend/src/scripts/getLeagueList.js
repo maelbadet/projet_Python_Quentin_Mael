@@ -1,22 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetchData();
+    fetchDataGetAll();
 });
 
-function fetchData() {
-    $.ajax({
+function fetchDataGetAll() {
+    /*$.ajax({
         url: "http://localhost:8000/api/v1/leagues/getAll",
         method: "GET",
         dataType: "json",
         success: function (data) {
-            displayData(data);
+            displayDataGetAll(data);
         },
         error: function (error) {
             console.error("Erreur AJAX :", error);
         }
-    });
+    });*/
+    displayDataGetAll([
+        {
+            "id": 1,
+            "name": "Premiership",
+            "country_id": 1161,
+            "image_path": "https://cdn.sportmonks.com/images/soccer/leagues/501.png"
+        }
+    ])
 }
 
-function displayData(data) {
+function displayDataGetAll(data) {
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",data);
     const listContainer = document.getElementById("list");
     listContainer.innerHTML = "";
 
