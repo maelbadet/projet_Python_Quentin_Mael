@@ -6,9 +6,18 @@
     <title>Accueil</title>
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/accueil.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
+
+        <!----------------------------------------------------------------------------------------->
+        <!-----------------------------------------HEADER------------------------------------------>
+        <!----------------------------------------------------------------------------------------->
+
     <header id="header-container">
         <div class="header">
             <a href="accueil.html" class="logo">GoalStat</a>
@@ -20,16 +29,62 @@
           </div>
     </header>
     
-    <main>
-        <section>
-            <h2>À propos de nous</h2>
-            <p>Découvrez notre site et nos services.</p>
-        </section>
-        <section>
-            <h2>Nos services</h2>
-            <p>Nous offrons diverses prestations adaptées à vos besoins.</p>
-        </section>
-    </main>
+    <div id="page-container">
+
+        <!----------------------------------------------------------------------------------------->
+        <!--------------------------------------LEFT ARTICLE--------------------------------------->
+        <!----------------------------------------------------------------------------------------->
+
+        <div id="fav-container">
+            <h3>Ligues Épinglées</h3>
+            <div id="fav-list">
+                <ul>
+                    <li><a href="/football/allemagne/bundesliga/">Bundesliga</a></li>
+                    <li><a href="/football/angleterre/premier-league/">Premier League</a></li>
+                    <li><a href="/football/angleterre/efl-cup/">EFL Cup</a></li>
+                    <li><a href="/football/espagne/laliga/">LaLiga</a></li>
+                    <li><a href="/football/france/ligue-1/">Ligue 1</a></li>
+                    <li><a href="/football/france/ligue-2/">Ligue 2</a></li>
+                    <li><a href="/football/france/coupe-de-france/">Coupe de France</a></li>
+                    <li><a href="/football/italie/serie-a/">Serie A</a></li>
+                    <li><a href="/football/pays-bas/eredivisie/">Eredivisie</a></li>
+                    <li><a href="/football/europe/euro/">Euro</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!----------------------------------------------------------------------------------------->
+        <!--------------------------------------RIGHT ARTICLE-------------------------------------->
+        <!----------------------------------------------------------------------------------------->
+
+        <div id="main-container">
+            <div id="league-container">
+                <ul id="list"></ul>
+            </div>
+            <div id="search-container" >
+                <h3>Recherche</h3>
+                <div id="search-input-container">
+                    <input type="search" id="search-input" name="search" placeholder="Entrez votre equipe ici">
+                </div>
+            </div>
+            <div id="recent-container">
+                <div class="recent-container-class-element" id="past-container">
+                    <h5>Derniers match joués : </h5>
+                    <div>
+                        <ul id="listLastMatch"></ul>
+                    </div>
+                </div>
+                <div class="recent-container-class-element" id="next-container">
+                    <h5>Prochains match joués : </h5>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+        <!----------------------------------------------------------------------------------------->
+        <!-----------------------------------------FOOTER------------------------------------------>
+        <!----------------------------------------------------------------------------------------->
     
     <footer>
         <div class="footer-container">
@@ -58,5 +113,7 @@
             </div>
         </div>
     </footer>
+    <script src="./scripts/getLeagueList.js"></script>
+    <script src="./scripts/getLastMatchs.js"></script>
 </body>
 </html>
