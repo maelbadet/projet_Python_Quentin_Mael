@@ -30,7 +30,7 @@ function displayDataLatestMatches(data) {
         const listItem = document.createElement("li");
         listItem.style.cursor = "pointer";
         listItem.addEventListener("click", () => {
-            window.location.href = `result.html?id=${item.id}`;
+            window.location.href = `match.html?id=${item.id}`;
         });
 
 
