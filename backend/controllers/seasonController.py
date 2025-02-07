@@ -7,8 +7,8 @@ season_router = APIRouter()
 
 
 @season_router.get("/getAll", response_model=list)
-def get_all_leagues(db: Session = Depends(get_db)):
-	leagues = db.query(Season).all()
+def get_all_season(db: Session = Depends(get_db)):
+	season = db.query(Season).all()
 	return [
 		{
 			"id": l.id,
@@ -16,12 +16,12 @@ def get_all_leagues(db: Session = Depends(get_db)):
 			"date_season": l.date_season,
 			"name": l.name
 		}
-		for l in leagues
+		for l in season
 	]
 
 
 @season_router.get("/get/{season_id}", response_model=dict)
-def get_league_by_id(season_id: int, db: Session = Depends(get_db)):
+def get_season_by_id(season_id: int, db: Session = Depends(get_db)):
 	season = db.query(Season).filter_by(id=season_id).first()
 	if not season:
 		raise HTTPException(status_code=404, detail="League not found")

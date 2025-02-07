@@ -48,6 +48,9 @@ remettre ici pour la simpliciter de lectures. Voici la liste des routes ainsi qu
   - <span style="color: #e51bcc">routes pour la recuperation des saisons</span>
     - http://localhost:8000/api/v1/seasons/getAll : Recupere toutes les saisons de la base de donnee
     - http://localhost:8000/api/v1/seasons/get/{season_id} : recupere la saison par son id
+  - <span style="color: #e51bcc">routes pour la recuperation des equipes</span>
+    - http://localhost:8000/api/v1/seasons/getAll : Recupere toutes les saisons de la base de donnee
+    - http://localhost:8000/api/v1/seasons/get/{season_id} : recupere la saison par son id
 
 ## FRONTEND
 ### -- **Important** --
