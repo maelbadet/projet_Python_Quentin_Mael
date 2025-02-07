@@ -63,6 +63,12 @@ function displayDataLatestMatches(data) {
 
     data.forEach(item => {
         const listItem = document.createElement("li");
+        listItem.style.cursor = "pointer";
+        listItem.addEventListener("click", () => {
+            //window.location.href = `match-details.html?id=${item.id}`;
+            window.location.href = `result.html?id=${item.id}`;
+        });
+
 
         // Séparer les équipes
         const [team1, team2] = item.name.split(" vs ");
@@ -91,7 +97,7 @@ function displayDataLatestMatches(data) {
         const matchDate = document.createElement("div");
         matchDate.textContent = formatDate(item.starting_at);
         matchDate.style.fontSize = "14px"; // Optionnel : réduire la taille du texte
-        matchDate.style.color = "#666"; // Optionnel : couleur grise pour la date
+        matchDate.style.color = "#808080"; // Optionnel : couleur grise pour la date
         listItem.appendChild(matchDate);
 
         // Score du match
