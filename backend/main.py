@@ -6,6 +6,7 @@ from controllers.resultController import result_router
 from controllers.seasonController import season_router
 from controllers.teamController import team_router
 from controllers.playerController import player_router
+from controllers.userController import user_router
 
 app = FastAPI(
 	title="Football API",
@@ -36,6 +37,7 @@ app.include_router(insertSeason.router, prefix="/api/v1/insert", tags=["Recupera
 app.include_router(insertResult.router, prefix="/api/v1/insert", tags=["Recuperation et insertion dans la base de donnee"])
 
 # Inclusion des routers des contrôleurs
+app.include_router(user_router, prefix="/api/v1/users", tags=["routes pour les users"])
 app.include_router(league_router, prefix="/api/v1/leagues", tags=["routes pour les ligues"])
 app.include_router(result_router, prefix="/api/v1/results", tags=["routes pour les resultats"])
 app.include_router(season_router, prefix="/api/v1/seasons", tags=["routes pour les saisons"])

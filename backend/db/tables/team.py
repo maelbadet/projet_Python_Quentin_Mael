@@ -1,4 +1,6 @@
 from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy.orm import relationship
+
 from .base import Base  # Import de la base commune
 import datetime
 
@@ -16,3 +18,4 @@ class Team(Base):
 	created_at = Column(Date, default=datetime.date.today)
 	updated_at = Column(Date, default=datetime.date.today)
 	deleted_at = Column(Date, default=None)
+	favorite_teams = relationship("FavoriteTeam", back_populates="team")
