@@ -1,14 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetchDataGetAll();
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const id = urlParams.get("id");
+
+    console.log("ID récupéré :", id);
+    fetchDataGetLeagueInfo(id);
 });
 
-function fetchDataGetAll() {
+function fetchDataGetLeagueInfo(id) {
     $.ajax({
-        url: "http://localhost:8000/api/v1/leagues/getAll",
+        url: `http://localhost:8000/api/v1/leagues/get/${id}`,
         method: "GET",
         dataType: "json",
         success: function (data) {
-            displayDataGetAll(data);
+            displayDataGetLeagueInfo(data);
         },
         error: function (error) {
             console.error("Erreur AJAX :", error);
@@ -16,7 +21,8 @@ function fetchDataGetAll() {
     });
 }
 
-function displayDataGetAll(data) {
+function displayDataGetLeagueInfo(data) {
+    console.log('data du get info league',data);
     const listContainer = document.getElementById("listLeague");
     listContainer.innerHTML = "";
 
