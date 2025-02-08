@@ -59,11 +59,15 @@ remettre ici pour la simpliciter de lectures. Voici la liste des routes ainsi qu
 ### -- **Important** --
 Avant de lancer l'application, il faut penser a bien installé les librairies utiliser pour ne 
 pas avoir de probleme :
-Liste des librairies : 
-- blablabla
-- blablabla
-- blablabla
-- blablabla
+
+### Différents Parcours existant :
+- **Parcours 1** : depuis la page accueil rentrer le nom d'une equipe dans la barre de rechercher
+afin d'arriver sur la page de détail lié à cette équipe et ces futurs / récents match jouer
+- **Parcours 2** : depuis la page accueil cliquer sur le logo / nom d'une league afin d'accéder aux
+différentes informations des prochains match / ancien match de cette ligue ainsi que le classement
+de toutes les équipes présente dans la league
+- **Parcours 3** : depuis la page accueil ou depuis une page de league appuyer sur l'un des match
+afin d'avoir des informations supplémentaires concernant le match
 
 ### Les routes
 Les differentes routes utilisees sont les suivantes : 
