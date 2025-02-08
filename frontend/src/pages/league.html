@@ -61,9 +61,12 @@
     <!----------------------------------------------------------------------------------------->
 
     <div id="main-container">
-        <div id="league-container">
-            <h2>Information de la league</h2>
-        </div>
+        <div class="recent-container-class-element" id="classement-league-container">
+                <h4>Classement de la league : </h4>
+                <div>
+                    <ul id="classement-league"></ul>
+                </div>
+            </div>
         <div id="recent-container">
             <div class="recent-container-class-element" id="past-container">
                 <h5>Derniers match joués : </h5>
@@ -109,16 +112,8 @@
         </div>
     </div>
 </footer>
-<script>
-    // Récupérer l'URL actuelle
-    const urlParams = new URLSearchParams(window.location.search);
-
-    // Extraire la valeur de "id"
-    const itemId = urlParams.get("id");
-
-    // Afficher l'ID dans la console (ou l'utiliser dans ton script)
-    console.log("ID récupéré :", itemId);
-</script>
-<script src="../scripts/session.js"></script>
+</footer>
+<script src="../scripts/getLeagueInfo.js" defer></script>
+<script src="../scripts/session.js" defer></script>
 </body>
 </html>

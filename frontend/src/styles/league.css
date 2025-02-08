@@ -15,40 +15,10 @@
     border: 1px solid #001e28;
 }
 
-#search-container{
-    padding: 20px;
-}
-
-#search-input-container{
-    align-items: center;
-    border: 1px solid #001e28;
-    border-radius: 8px;
-    display: flex;
-    margin: 24px auto 20px;
-    width: 800px;
-    background-color: #555e61;
-}
-
-#search-input{
-    appearance: none;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    box-sizing: border-box;
-    flex: auto;
-    color: #ffffff;
-    font-family: inherit;
-    font-size: 13px;
-    height: 36px;
-    margin: 0;
-    outline: 0;
-    padding-left: 12px;
-}
-
-#search-input::placeholder{
-    color: #ffffff;
-    opacity: 0.8;
+#classement-league-container{
+    width: 780px;
+    height: 480px;
+    margin-top: 40px;
 }
 
 #league-container {
