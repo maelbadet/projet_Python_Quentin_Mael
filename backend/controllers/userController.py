@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
 import bcrypt
@@ -15,6 +15,11 @@ class UserCreate(BaseModel):
 	surname: str | None = None
 	email: str
 	telephone: str | None = None
+	password: str
+
+# Modèle des données envoyées dans la requête
+class LoginRequest(BaseModel):
+	email: str
 	password: str
 
 
@@ -59,3 +64,23 @@ def get_all_user(db: Session = Depends(get_db)):
 		}
 		for u in user
 	]
+
+@user_router.post("/login", response_model=dict)
+def login(request: LoginRequest, db: Session = Depends(get_db)):
+	# Recherche dans la base de données par email
+	user = db.query(User).filter(User.email == request.email).first()
+
+	# Vérification si l'utilisateur existe
+	if not user:
+		raise HTTPException(status_code=404, detail="Utilisateur non trouvé")
+
+	# Vérification du mot de passe
+	if not bcrypt.checkpw(request.password.encode('utf-8'), user.password.encode('utf-8')):
+		raise HTTPException(status_code=400, detail="Mot de passe incorrect")
+
+	# Retourne les informations utilisateur
+	return {
+		"message": "Connexion réussie",
+		"id": user.id,
+		"name": user.surname,
+	}

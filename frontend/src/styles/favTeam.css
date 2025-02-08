@@ -1,0 +1,39 @@
+   #favorite-team-container {
+       display: flex;
+       justify-content: space-between;
+       width: 100%;
+   }
+
+   #team-info, #team-matches {
+       flex: 1;
+       padding: 20px;
+       background-color: #f9f9f9;
+       border-radius: 8px;
+       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   }
+
+   #team-info {
+       margin-right: 20px;
+   }
+
+   #team-logo {
+       width: 100px;
+       height: auto;
+       margin-bottom: 10px;
+   }
+
+   #team-details ul {
+       list-style: none;
+       padding: 0;
+   }
+
+   #team-last-matches {
+       list-style: none;
+       padding: 0;
+   }
+
+   #team-last-matches li {
+       margin-bottom: 5px;
+       padding: 10px;
+       border-bottom: 1px solid #ddd;
+   }

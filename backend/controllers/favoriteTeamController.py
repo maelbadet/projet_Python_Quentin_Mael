@@ -23,9 +23,9 @@ def get_all_favorite_teams(user_id: int, db: Session = Depends(get_db)):
 
 	return [
 		{
-			"team_id": fv.team.id,
-			"team_name": fv.team.name,
-			"team_image_path": fv.team.img_path
+			"id": fv.team.id,
+			"name": fv.team.name,
+			"img_path": fv.team.img_path
 		}
 		for fv in favorite_teams
 	]
