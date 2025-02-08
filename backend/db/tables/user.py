@@ -10,8 +10,8 @@ class User(Base):
 
 	id = Column(Integer, primary_key=True, index=True)
 	name = Column(String(60), nullable=False)
-	surname = Column(String(60), nullable=True)
-	email = Column(String(255), nullable=True, unique=True)
+	surname = Column(String(60), nullable=False)
+	email = Column(String(255), nullable=False, unique=True)
 	telephone = Column(String(20), nullable=True)
 	password = Column(String(255), nullable=False)
 	created_at = Column(Date, default=datetime.date.today)
