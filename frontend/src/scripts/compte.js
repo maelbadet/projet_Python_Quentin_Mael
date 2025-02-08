@@ -3,17 +3,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     const teamsContainer = document.getElementById("teams-container"); // Conteneur pour les cartes
 
     try {
-        const userId = localStorage.getItem("userId"); // Récupération de l'utilisateur connecté
+        const userId = localStorage.getItem("userId");
         if (!userId) {
             alert("Vous devez être connecté pour voir vos favoris.");
             return;
         }
 
-        // Appel pour récupérer les équipes favorites de l'utilisateur
-        const favoritesResponse = await fetch(`http://localhost:8000/api/v1/users/favorites/getAllByUser?user_id=${userId}`);
-        if (!favoritesResponse.ok) throw new Error("Erreur lors de la récupération des favoris.");
-
-        const favoriteTeams = await favoritesResponse.json();
+        let favoriteTeams = [];
+        try {
+            // Appel pour récupérer les équipes favorites de l'utilisateur
+            const favoritesResponse = await fetch(`http://localhost:8000/api/v1/users/favorites/getAllByUser?user_id=${userId}`);
+            if (favoritesResponse.ok) {
+                favoriteTeams = await favoritesResponse.json();
+            } else if (favoritesResponse.status === 404) {
+                // Pas de favoris trouvés, continuer pour récupérer toutes les équipes.
+                console.info("Aucune équipe favorite trouvée. Affichage de la liste des équipes.");
+            } else {
+                throw new Error("Erreur inattendue lors de la récupération des favoris.");
+            }
+        } catch (error) {
+            console.warn("Impossible de récupérer les favoris, récupération des équipes disponibles : ", error);
+        }
 
         if (favoriteTeams.length > 0) {
             // Si des équipes favorites existent, affichez-les
@@ -25,7 +35,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
         } else {
             // Sinon, affichez toutes les équipes disponibles
-            console.info("Aucune équipe favorite trouvée. Affichage de la liste des équipes.");
             const allTeamsResponse = await fetch(`http://localhost:8000/api/v1/teams/getAll`);
             if (!allTeamsResponse.ok) throw new Error("Erreur lors de la récupération des équipes.");
 
@@ -41,7 +50,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     } catch (error) {
         console.error("Erreur :", error);
-        alert("Une erreur est survenue lors du chargement des équipes. Veuillez réessayer.");
     }
 });
 
@@ -66,10 +74,8 @@ function createTeamCard(team, isFavorite) {
         const teamId = button.getAttribute("data-team-id");
         if (isFavorite) {
             await removeFromFavorites(teamId);
-            alert(`${team.name} a été retirée des favoris.`);
         } else {
             await addToFavorites(teamId);
-            alert(`${team.name} a été ajoutée aux favoris.`);
         }
         location.reload(); // Rechargez la page pour mettre à jour les favoris après une modification
     });
@@ -77,7 +83,7 @@ function createTeamCard(team, isFavorite) {
     return card;
 }
 
-// Fonction pour ajouter une équipe aux favoris
+// Fonction pour ajouter une équipe aux favoris ou la restaurer si elle est "supprimée logiquement"
 async function addToFavorites(teamId) {
     const userId = localStorage.getItem("userId");
     if (!userId) {
@@ -86,16 +92,43 @@ async function addToFavorites(teamId) {
     }
 
     try {
+        // Requête pour ajouter l'équipe aux favoris
         const response = await fetch("http://localhost:8000/api/v1/users/favorite", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ user_id: userId, team_id: teamId }),
         });
-        if (!response.ok) throw new Error("Erreur lors de l'ajout aux favoris.");
-        console.log(`Équipe avec ID ${teamId} ajoutée aux favoris.`);
+
+        // Si la requête POST réussit, équipe ajoutée
+        if (response.ok) {
+            console.log(`Équipe avec ID ${teamId} ajoutée aux favoris.`);
+            return;
+        }
+
+        // Gestion du cas où l'équipe est déjà une favorite supprimée logiquement
+        const errorData = await response.json();
+        if (response.status === 400 && errorData.detail === "This team is already a favorite for this user.") {
+            console.warn("L'équipe est déjà dans vos favoris. Tentative de restauration...");
+
+            // Requête PATCH pour restaurer l'équipe supprimée logiquement
+            const patchResponse = await fetch(`http://localhost:8000/api/v1/users/favorite?user_id=${userId}&team_id=${teamId}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+            });
+
+            if (patchResponse.ok) {
+                console.log(`Équipe avec ID ${teamId} restaurée avec succès.`);
+                return;
+            }
+
+            // Renvoyer une erreur si la restauration échoue
+            throw new Error("Impossible de restaurer l'équipe comme favorite.");
+        }
+
+        // Renvoyer une erreur si une autre erreur inattendue survient
+        throw new Error("Erreur lors de l'ajout aux favoris.");
     } catch (error) {
         console.error("Erreur :", error);
-        alert("Impossible d'ajouter cette équipe aux favoris. Veuillez réessayer.");
     }
 }
 
@@ -103,22 +136,17 @@ async function addToFavorites(teamId) {
 async function removeFromFavorites(teamId) {
     const userId = localStorage.getItem("userId"); // Récupérer l'ID utilisateur du stockage local
     if (!userId) {
-        alert("Vous devez être connecté pour retirer une équipe de vos favoris.");
         return;
     }
 
     try {
-        // Inclure les paramètres user_id et team_id dans la query string de l'URL
         const response = await fetch(`http://localhost:8000/api/v1/users/favorite?user_id=${userId}&team_id=${teamId}`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" }
         });
 
         if (!response.ok) throw new Error("Erreur lors du retrait des favoris.");
-        console.log(`Équipe avec ID ${teamId} retirée des favoris.`);
-        alert("Équipe retirée des favoris avec succès !");
     } catch (error) {
         console.error("Erreur :", error);
-        alert("Impossible de retirer cette équipe des favoris. Veuillez réessayer.");
     }
 }
