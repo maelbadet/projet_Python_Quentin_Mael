@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
@@ -37,8 +37,8 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
 		email=user.email,
 		telephone=user.telephone,
 		password=hashed_password,
-		created_at=datetime.utcnow(),
-		updated_at=datetime.utcnow(),
+		created_at=datetime.now(timezone.utc),
+		updated_at=datetime.now(timezone.utc),
 	)
 	db.add(new_user)
 	db.commit()
