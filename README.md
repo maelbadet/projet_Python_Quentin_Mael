@@ -68,13 +68,3 @@ différentes informations des prochains match / ancien match de cette ligue ains
 de toutes les équipes présente dans la league
 - **Parcours 3** : depuis la page accueil ou depuis une page de league appuyer sur l'un des match
 afin d'avoir des informations supplémentaires concernant le match
-
-### Les routes
-Les differentes routes utilisees sont les suivantes : 
-- route 1 : expliquer à quoi servent les routes
-- route 2 : expliquer à quoi servent les routes
-- route 3 : expliquer à quoi servent les routes
-- route 4 : expliquer à quoi servent les routes
-- route 5 : expliquer à quoi servent les routes
-
-Mettre des explications sur le fonctionnement de l'application coté front
