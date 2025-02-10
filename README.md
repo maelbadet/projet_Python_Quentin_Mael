@@ -65,3 +65,5 @@ différentes informations des prochains match / ancien match de cette ligue ains
 de toutes les équipes présente dans la league
 - **Parcours 3** : depuis la page accueil ou depuis une page de league appuyer sur l'un des match
 afin d'avoir des informations supplémentaires concernant le match
+- **Parcours 4** : Si un compte est creer et que vous etes connecter, cliquer sur `bienvenu {prenom}`
+pour acceder au listing des equipes et pouvoir en ajouter une en favoris.
