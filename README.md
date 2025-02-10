@@ -56,9 +56,6 @@ remettre ici pour la simpliciter de lectures. Voici la liste des routes ainsi qu
 
 
 ## FRONTEND
-### -- **Important** --
-Avant de lancer l'application, il faut penser a bien installé les librairies utiliser pour ne 
-pas avoir de probleme :
 
 ### Différents Parcours existant :
 - **Parcours 1** : depuis la page accueil rentrer le nom d'une equipe dans la barre de rechercher
